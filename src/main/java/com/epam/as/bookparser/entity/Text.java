@@ -21,7 +21,7 @@ public class Text implements TextContainer {
         List<String> paragraphs = parseService.findParagraphFromText(text);
         for (String p : paragraphs)
             paragraphList.add(new Paragraph(p));
-        for (TextContainer t : paragraphList) System.out.println(t);
+        //  for (TextContainer t : paragraphList) System.out.println(t.toString());
     }
 
 

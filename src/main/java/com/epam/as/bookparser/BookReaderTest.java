@@ -22,6 +22,7 @@ public class BookReaderTest {
         FileWriter writer = new FileWriter();
 
         String fileText = reader.getTextFromFile(inFilename);
+        System.out.println(fileText);
         Text text = new Text(fileText);
 
         writer.writeToFile(fileText, outFilename);
