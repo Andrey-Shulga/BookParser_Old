@@ -8,18 +8,22 @@ import java.io.IOException;
  */
 public class FileReader {
 
-
+    /**
+     * Read text from file
+     *
+     * @param filename the name of file
+     * @return the text from the file
+     */
     public String getTextFromFile(String filename) {
         String text = "";
         try (FileInputStream in = new FileInputStream(filename)) {
             byte[] str = new byte[in.available()];
             in.read(str);
             text = new String(str);
-            //  System.out.println(text);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ;
+
         return text;
     }
 }

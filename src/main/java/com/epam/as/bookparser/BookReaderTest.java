@@ -7,7 +7,7 @@ import com.epam.as.bookparser.service.FileWriter;
 import java.io.IOException;
 
 /**
- * This program parses book (from text file) into its component parts.
+ * This program parses book (from text file) into its separate parts.
  *
  * @author Andrey Shulga
  * @version 1.0.0 2016-10-24
@@ -15,17 +15,19 @@ import java.io.IOException;
 public class BookReaderTest {
     public static void main(String[] args) throws IOException {
 
-        String inFilename = "book.txt";
-        String outFilename = "bookCopy.txt";
+        String inputBookFilename = "book.txt";
+        String outParagraphsFilename = "bookParagraphs.txt";
+
 
         FileReader reader = new FileReader();
         FileWriter writer = new FileWriter();
 
-        String fileText = reader.getTextFromFile(inFilename);
-
+        //Read a text from the book
+        String fileText = reader.getTextFromFile(inputBookFilename);
         Text text = new Text(fileText);
 
-        writer.writeToFile(fileText, outFilename);
+        //Write all parsed paragraphs to file
+        writer.writeToFile(text.getTextParts(), outParagraphsFilename);
 
     }
 }

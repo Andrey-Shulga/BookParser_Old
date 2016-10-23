@@ -1,43 +1,59 @@
 package com.epam.as.bookparser.entity;
 
-import com.epam.as.bookparser.TextContainer;
-import com.epam.as.bookparser.service.ParseService;
+import com.epam.as.bookparser.model.TextContainer;
+import com.epam.as.bookparser.service.FileWriter;
+import com.epam.as.bookparser.service.Parser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class keep the list of sentences.
+ * Class keeps paragraph with the list of sentences.
  */
 public class Paragraph implements TextContainer {
 
     private List<TextContainer> sentenceList;
-    private String paragraphText;
+    private String paragraph;
 
-    public Paragraph(String textPart) {
-        paragraphText = textPart;
+    /**
+     * Constructs the container which contains the list of sentences.
+     *
+     * @param textPart the paragraph of text
+     */
+    public Paragraph(String textPart) throws IOException {
+
+        this.paragraph = textPart;
         this.sentenceList = new ArrayList<>();
-        ParseService parseService = new ParseService();
-        //  List<String> sentences = parseService.findParagraphFromText(textPart);
-        //   for (String p : sentences)
-        //       addTextPart(p);
 
+        Parser parser = new Parser();
+        String regexp = "[A-Z].*?[.!?\\n](?=\\s|$)";
+        List<String> sentences = parser.parseTextOnParts(textPart, regexp);
+
+        FileWriter writer = new FileWriter();
+
+        for (String s : sentences) {
+            addTextPart(s);
+            System.out.println(s);
+        }
 
     }
 
     @Override
-    public void addTextPart(String textPart) {
-        this.sentenceList.add(new Paragraph(textPart));
+    public void addTextPart(String textPart) throws IOException {
+        this.sentenceList.add(new Sentence(textPart));
     }
 
     @Override
-    public String getTextPart() {
-        //  for (TextContainer this: )
-        return null;
+    public String getTextParts() {
+        String result = "";
+        for (TextContainer tc : this.sentenceList)
+            result += tc;
+        return result;
     }
 
     @Override
     public String toString() {
-        return paragraphText;
+        return paragraph;
     }
 }
