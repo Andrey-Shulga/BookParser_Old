@@ -5,7 +5,7 @@ package com.epam.as.bookparser;
  */
 public interface TextContainer {
 
-    void addTextPart(TextContainer tcont);
+    void addTextPart(String textPart);
 
     TextContainer getTextPart();
 

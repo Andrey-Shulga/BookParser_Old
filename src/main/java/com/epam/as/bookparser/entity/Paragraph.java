@@ -3,7 +3,7 @@ package com.epam.as.bookparser.entity;
 import com.epam.as.bookparser.TextContainer;
 
 /**
- * Created by Admin on 22.10.2016.
+ * Class keep the list of sentences.
  */
 public class Paragraph implements TextContainer {
     public Paragraph(String p) {

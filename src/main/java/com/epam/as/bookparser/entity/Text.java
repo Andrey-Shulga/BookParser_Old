@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class keep the list of paragraphs..
+ * Class keep the list of paragraphs.
  */
 public class Text implements TextContainer {
 
@@ -16,18 +16,20 @@ public class Text implements TextContainer {
 
     public Text(String text) {
 
-        paragraphList = new ArrayList<>();
+        this.paragraphList = new ArrayList<>();
         ParseService parseService = new ParseService();
         List<String> paragraphs = parseService.findParagraphFromText(text);
         for (String p : paragraphs)
-            paragraphList.add(new Paragraph(p));
-        //  for (TextContainer t : paragraphList) System.out.println(t.toString());
+            addTextPart(p);
+
+
+        //for (TextContainer t : paragraphList) System.out.println(t.toString());
     }
 
 
     @Override
-    public void addTextPart(TextContainer tcont) {
-
+    public void addTextPart(String textPart) {
+        this.paragraphList.add(new Paragraph(textPart));
     }
 
     @Override
