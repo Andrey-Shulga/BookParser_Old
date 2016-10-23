@@ -15,6 +15,7 @@ public class FileReader {
             byte[] str = new byte[in.available()];
             in.read(str);
             text = new String(str);
+            //  System.out.println(text);
         } catch (IOException e) {
             e.printStackTrace();
         }

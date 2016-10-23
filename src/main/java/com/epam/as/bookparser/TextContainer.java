@@ -7,6 +7,7 @@ public interface TextContainer {
 
     void addTextPart(String textPart);
 
-    TextContainer getTextPart();
+    String getTextPart();
+
 
 }

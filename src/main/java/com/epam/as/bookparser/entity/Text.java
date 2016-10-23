@@ -3,6 +3,7 @@ package com.epam.as.bookparser.entity;
 import com.epam.as.bookparser.TextContainer;
 import com.epam.as.bookparser.service.ParseService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,16 +15,16 @@ public class Text implements TextContainer {
     private List<TextContainer> paragraphList;
 
 
-    public Text(String text) {
+    public Text(String text) throws IOException {
 
         this.paragraphList = new ArrayList<>();
         ParseService parseService = new ParseService();
         List<String> paragraphs = parseService.findParagraphFromText(text);
-        for (String p : paragraphs)
+        for (String p : paragraphs) {
             addTextPart(p);
+        }
 
-
-        //for (TextContainer t : paragraphList) System.out.println(t.toString());
+        System.out.println(this.getTextPart());
     }
 
 
@@ -33,8 +34,12 @@ public class Text implements TextContainer {
     }
 
     @Override
-    public TextContainer getTextPart() {
-
-        return null;
+    public String getTextPart() {
+        String result = "";
+        for (TextContainer tc : this.paragraphList)
+            result += tc;
+        return result;
     }
+
+
 }
