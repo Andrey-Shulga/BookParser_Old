@@ -25,14 +25,19 @@ public class Text implements TextContainer {
         this.text = text;
         this.paragraphList = new ArrayList<>();
 
+        initializeNewTextContainer(this.text);
+
+    }
+
+    @Override
+    public void initializeNewTextContainer(String textPart) throws IOException {
         Parser parser = new Parser();
         String regexp = ".*(\\r\\n|\\r|\\n)";
-        List<String> paragraphs = parser.parseTextOnParts(text, regexp);
+        List<String> paragraphs = parser.parseTextOnParts(textPart, regexp);
 
         for (String p : paragraphs) {
             addTextPart(p);
         }
-
     }
 
     @Override
@@ -46,6 +51,11 @@ public class Text implements TextContainer {
         for (TextContainer tc : this.paragraphList)
             result += tc.getTextParts();
         return result;
+    }
+
+    @Override
+    public List<TextContainer> getTextContainer() {
+        return this.paragraphList;
     }
 
     @Override

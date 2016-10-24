@@ -18,21 +18,25 @@ public class Paragraph implements TextContainer {
     /**
      * Constructs the container which contains the list of sentences.
      *
-     * @param textPart the paragraph of text
+     * @param paragraph the paragraph of text
      */
-    public Paragraph(String textPart) throws IOException {
+    public Paragraph(String paragraph) throws IOException {
 
-        this.paragraph = textPart;
+        this.paragraph = paragraph;
         this.sentenceList = new ArrayList<>();
 
+        initializeNewTextContainer(this.paragraph);
+
+    }
+
+    @Override
+    public void initializeNewTextContainer(String textPart) throws IOException {
         Parser parser = new Parser();
         String regexp = "[A-Z].*?[.!?\\r\\n|\\r|\\n](?=\\s|$)";
         List<String> sentences = parser.parseTextOnParts(textPart, regexp);
 
         for (String s : sentences)
             addTextPart(s);
-
-
     }
 
     @Override
@@ -46,6 +50,11 @@ public class Paragraph implements TextContainer {
         for (TextContainer tc : this.sentenceList)
             result += tc.getTextParts();
         return result;
+    }
+
+    @Override
+    public List<TextContainer> getTextContainer() {
+        return this.sentenceList;
     }
 
     @Override

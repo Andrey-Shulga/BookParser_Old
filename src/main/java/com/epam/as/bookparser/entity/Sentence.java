@@ -11,34 +11,50 @@ import java.util.List;
  * Class keeps the list of words, white spaces and punctuations.
  */
 public class Sentence implements TextContainer {
-    private List<TextContainer> wordsAndSignsList;
+    private List<TextContainer> wordsAndMarksList;
     private String sentence;
 
-    public Sentence(String textPart) throws IOException {
+    /**
+     * Constructs the container which contains the list of words and punctuation marks.
+     *
+     * @param sentence the sentence of text
+     */
+    public Sentence(String sentence) throws IOException {
 
-        this.sentence = textPart;
-        this.wordsAndSignsList = new ArrayList<>();
+        this.sentence = sentence;
+        this.wordsAndMarksList = new ArrayList<>();
 
-        Parser parser = new Parser();
-        String regexp = " ";
-        List<String> wordsSigns = parser.parseTextOnParts(textPart, regexp);
-
-        for (String ws : wordsSigns)
-            addTextPart(ws);
+        initializeNewTextContainer(this.sentence);
 
     }
 
     @Override
-    public void addTextPart(String textPart) {
+    public void initializeNewTextContainer(String textPart) throws IOException {
 
+        Parser parser = new Parser();
+        String regexp = " ";
+        List<String> wordsMarks = parser.parseTextOnParts(textPart, regexp);
+
+        for (String wm : wordsMarks)
+            addTextPart(wm);
+    }
+
+    @Override
+    public void addTextPart(String textPart) {
+        // this.wordsAndMarksList.add(new WordAndMark(textPart));
     }
 
     @Override
     public String getTextParts() {
         String result = "";
-        for (TextContainer tc : this.wordsAndSignsList)
+        for (TextContainer tc : this.wordsAndMarksList)
             result += tc.getTextParts();
-        return sentence;
+        return result;
+    }
+
+    @Override
+    public List<TextContainer> getTextContainer() {
+        return this.wordsAndMarksList;
     }
 
     @Override
