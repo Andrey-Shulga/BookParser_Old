@@ -20,7 +20,7 @@ public class Parser {
     public List<String> parseTextOnParts(String textPart, String regexp) {
 
         List<String> list = new ArrayList<>();
-        Pattern pattern = Pattern.compile(regexp);
+        Pattern pattern = Pattern.compile(regexp, 32);
         Matcher matcher = pattern.matcher(textPart);
         while (matcher.find()) {
             list.add(matcher.group());

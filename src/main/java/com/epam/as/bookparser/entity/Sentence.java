@@ -37,8 +37,8 @@ public class Sentence implements TextContainer {
     public String getTextParts() {
         String result = "";
         for (TextContainer tc : this.wordsAndSignsList)
-            result += tc;
-        return result;
+            result += tc.getTextParts();
+        return sentence;
     }
 
     @Override

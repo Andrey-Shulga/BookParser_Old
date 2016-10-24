@@ -26,7 +26,7 @@ public class Text implements TextContainer {
         this.paragraphList = new ArrayList<>();
 
         Parser parser = new Parser();
-        String regexp = ".*(\\n)";
+        String regexp = ".*(\\r\\n|\\r|\\n)";
         List<String> paragraphs = parser.parseTextOnParts(text, regexp);
 
         for (String p : paragraphs) {
@@ -44,7 +44,7 @@ public class Text implements TextContainer {
     public String getTextParts() {
         String result = "";
         for (TextContainer tc : this.paragraphList)
-            result += tc;
+            result += tc.getTextParts();
         return result;
     }
 

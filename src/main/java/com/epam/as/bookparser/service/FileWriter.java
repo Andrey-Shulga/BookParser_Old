@@ -17,7 +17,7 @@ public class FileWriter {
      */
     public void writeToFile(String text, String filename) throws IOException {
 
-        try (BufferedWriter out = new BufferedWriter(new java.io.FileWriter((filename)))) {
+        try (BufferedWriter out = new BufferedWriter(new java.io.FileWriter(filename))) {
             out.write(text);
         }
     }

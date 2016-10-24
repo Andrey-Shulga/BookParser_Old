@@ -26,13 +26,12 @@ public class Paragraph implements TextContainer {
         this.sentenceList = new ArrayList<>();
 
         Parser parser = new Parser();
-        String regexp = "[A-Z].*?[.!?\\n](?=\\s|$)";
+        String regexp = "[A-Z].*?[.!?\\r\\n|\\r|\\n](?=\\s|$)";
         List<String> sentences = parser.parseTextOnParts(textPart, regexp);
 
-        for (String s : sentences) {
+        for (String s : sentences)
             addTextPart(s);
-            System.out.println(s);
-        }
+
 
     }
 
@@ -45,7 +44,7 @@ public class Paragraph implements TextContainer {
     public String getTextParts() {
         String result = "";
         for (TextContainer tc : this.sentenceList)
-            result += tc;
+            result += tc.getTextParts();
         return result;
     }
 

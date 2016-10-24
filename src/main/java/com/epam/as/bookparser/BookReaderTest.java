@@ -16,7 +16,7 @@ public class BookReaderTest {
     public static void main(String[] args) throws IOException {
 
         String inputBookFilename = "book.txt";
-        String outParagraphsFilename = "bookParagraphs.txt";
+        String copyBookFilename = "bookCopy.txt";
 
 
         FileReader reader = new FileReader();
@@ -24,10 +24,14 @@ public class BookReaderTest {
 
         //Read a text from the book
         String fileText = reader.getTextFromFile(inputBookFilename);
+
+        //Parse text from the book on separate parts
         Text text = new Text(fileText);
 
-        //Write all parsed paragraphs to file
-        writer.writeToFile(text.getTextParts(), outParagraphsFilename);
+        System.out.println(text.getTextParts());
+
+        //Collect all parsed text's parts and write to file
+        writer.writeToFile(text.getTextParts(), copyBookFilename);
 
     }
 }
