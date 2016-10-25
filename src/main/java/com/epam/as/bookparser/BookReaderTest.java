@@ -24,10 +24,10 @@ public class BookReaderTest {
         //Read a text from the book
         String fileText = reader.getTextFromFile(inputBookFilename);
 
-        //Parse the whole text from the book on separate parts
+        //Parse recursively the whole text from the book on separate parts
         Text text = new Text(fileText);
 
-        //Collect all parts back to text
+        //Collect recursively all parts back to text
         String collectedText = text.getTextParts();
 
         //Output collected text to console
