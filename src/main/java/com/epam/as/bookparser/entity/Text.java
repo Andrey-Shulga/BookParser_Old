@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class keeps whole the text with list of its paragraphs.
+ * Text container keeps whole the text with list of its paragraphs.
  */
 public class Text implements TextContainer {
 

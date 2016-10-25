@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class keeps the list of words, white spaces and punctuations.
+ * Text container keeps the sentence with the list of its words, white spaces and punctuation marks.
  */
 public class Sentence implements TextContainer {
-    private List<TextContainer> wordsAndMarksList;
+    private List<TextContainer> sentencePartList;
     private String sentence;
 
     /**
@@ -22,7 +22,7 @@ public class Sentence implements TextContainer {
     public Sentence(String sentence) throws IOException {
 
         this.sentence = sentence;
-        this.wordsAndMarksList = new ArrayList<>();
+        this.sentencePartList = new ArrayList<>();
 
         initializeNewTextContainer(this.sentence);
 
@@ -32,29 +32,29 @@ public class Sentence implements TextContainer {
     public void initializeNewTextContainer(String textPart) throws IOException {
 
         Parser parser = new Parser();
-        String regexp = " ";
-        List<String> wordsMarks = parser.parseTextOnParts(textPart, regexp);
+        String regexp = "([^\\p{Punct}\\s\\t]*[^\\p{Punct}\\s\\t])|(\\p{Punct})|(\\s)";
+        List<String> sentenceParts = parser.parseTextOnParts(textPart, regexp);
 
-        for (String wm : wordsMarks)
-            addTextPart(wm);
+        for (String sp : sentenceParts)
+            addTextPart(sp);
     }
 
     @Override
-    public void addTextPart(String textPart) {
-        // this.wordsAndMarksList.add(new WordAndMark(textPart));
+    public void addTextPart(String textPart) throws IOException {
+        this.sentencePartList.add(new SentencePart(textPart));
     }
 
     @Override
     public String getTextParts() {
         String result = "";
-        for (TextContainer tc : this.wordsAndMarksList)
+        for (TextContainer tc : this.sentencePartList)
             result += tc.getTextParts();
         return result;
     }
 
     @Override
     public List<TextContainer> getTextContainer() {
-        return this.wordsAndMarksList;
+        return this.sentencePartList;
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class keeps paragraph with the list of sentences.
+ * Text container keeps paragraph with the list of its sentences.
  */
 public class Paragraph implements TextContainer {
 
@@ -32,7 +32,7 @@ public class Paragraph implements TextContainer {
     @Override
     public void initializeNewTextContainer(String textPart) throws IOException {
         Parser parser = new Parser();
-        String regexp = "[A-Z].*?[.!?\\r\\n|\\r|\\n](?=\\s|$)";
+        String regexp = "([^(.|!|?)]+)(.|!|\\?)";
         List<String> sentences = parser.parseTextOnParts(textPart, regexp);
 
         for (String s : sentences)

@@ -5,6 +5,8 @@ package com.epam.as.bookparser.model;
  */
 public interface TextComponent {
 
-    char getSymbol();
+    void setChar(String ch);
+
+    String getChar();
 
 }
