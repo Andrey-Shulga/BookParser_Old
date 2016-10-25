@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Text container keeps the sentence with the list of its words, white spaces and punctuation marks.
+ * Text container keeps the sentence with the list of its sentence's parts (words, white spaces and punctuation marks).
  */
 public class Sentence implements TextContainer {
     private List<TextContainer> sentencePartList;
     private String sentence;
 
     /**
-     * Constructs the container which contains the list of words and punctuation marks.
+     * Constructs the container "SentencePart" which contains the list of words, white spaces and punctuation marks its
+     * sentence.
      *
-     * @param sentence the sentence of text
+     * @param sentence the sentence of paragraph
      */
     public Sentence(String sentence) throws IOException {
 

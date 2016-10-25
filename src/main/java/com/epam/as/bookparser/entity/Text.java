@@ -16,7 +16,7 @@ public class Text implements TextContainer {
     private String text;
 
     /**
-     * Constructs the container which contains the list of paragraphs.
+     * Constructs the container "Paragraph" which contains the list of paragraphs its text.
      *
      * @param text the whole text of book
      */

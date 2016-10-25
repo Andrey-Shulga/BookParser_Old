@@ -18,20 +18,22 @@ public class BookReaderTest {
         String inputBookFilename = "book.txt";
         String copyBookFilename = "bookCopy.txt";
 
-
         FileReader reader = new FileReader();
         FileWriter writer = new FileWriter();
 
         //Read a text from the book
         String fileText = reader.getTextFromFile(inputBookFilename);
 
-        //Parse text from the book on separate parts
+        //Parse the whole text from the book on separate parts
         Text text = new Text(fileText);
 
-        System.out.println(text.getTextParts());
+        //Collect all parts back to text
+        String collectedText = text.getTextParts();
 
-        //Collect all parsed text's parts and write to file
-        writer.writeToFile(text.getTextParts(), copyBookFilename);
+        //Output collected text to console
+        System.out.println(collectedText);
 
+        //Write collected text to file
+        writer.writeToFile(collectedText, copyBookFilename);
     }
 }

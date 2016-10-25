@@ -16,7 +16,7 @@ public class Paragraph implements TextContainer {
     private String paragraph;
 
     /**
-     * Constructs the container which contains the list of sentences.
+     * Constructs the container "Sentence" which contains the list of sentences its paragraph.
      *
      * @param paragraph the paragraph of text
      */

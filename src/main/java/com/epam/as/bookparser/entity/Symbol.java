@@ -1,7 +1,7 @@
 package com.epam.as.bookparser.entity;
 
 /**
- * Created by Admin on 25.10.2016.
+ * Text component contains only 1 symbol
  */
 public class Symbol {
 }
