@@ -28,4 +28,10 @@ public class Parser {
         return list;
     }
 
+    public boolean isWhiteSpaceOrPunctuation(String textPart, String regexp) {
+        Pattern pattern = Pattern.compile(regexp, 32);
+        Matcher matcher = pattern.matcher(textPart);
+        return matcher.find();
+    }
+
 }

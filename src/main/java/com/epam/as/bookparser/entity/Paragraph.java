@@ -1,6 +1,6 @@
 package com.epam.as.bookparser.entity;
 
-import com.epam.as.bookparser.model.TextContainer;
+import com.epam.as.bookparser.model.TextComposite;
 import com.epam.as.bookparser.service.Parser;
 
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Text container keeps paragraph with the list of its sentences.
  */
-public class Paragraph implements TextContainer {
+public class Paragraph implements TextComposite {
 
-    private List<TextContainer> sentenceList;
+    private List<TextComposite> sentenceList;
     private String paragraph;
 
     /**
@@ -47,13 +47,13 @@ public class Paragraph implements TextContainer {
     @Override
     public String getTextParts() {
         String result = "";
-        for (TextContainer tc : this.sentenceList)
+        for (TextComposite tc : this.sentenceList)
             result += tc.getTextParts();
         return result;
     }
 
     @Override
-    public List<TextContainer> getTextContainer() {
+    public List<TextComposite> getTextContainer() {
         return this.sentenceList;
     }
 
@@ -61,4 +61,10 @@ public class Paragraph implements TextContainer {
     public String toString() {
         return paragraph;
     }
+
+    @Override
+    public String getSymbol() {
+        throw new UnsupportedOperationException();
+    }
+
 }

@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * An interface for access to the container objects.
+ * An universal interface for access to the container and indivisible component.
  */
-public interface TextContainer {
+public interface TextComposite {
 
     /**
-     * Initializes new TextContainer by text's part
+     * Initializes new text container by text's part
      *
      * @param textPart the part of text
      */
@@ -20,20 +20,27 @@ public interface TextContainer {
      *
      * @return text container
      */
-    List<TextContainer> getTextContainer();
+    List<TextComposite> getTextContainer();
 
     /**
      * Add a part of the text in the container.
      *
-     * @param textPart the par of text
+     * @param textPart the part of text
      */
     void addTextPart(String textPart) throws IOException;
 
     /**
      * Return all parts of the text from the container.
      *
-     * @return parts of text in this container
+     * @return parts of text in that container
      */
     String getTextParts();
+
+    /**
+     * Return indivisible component of text part (single symbol)
+     *
+     * @return symbol
+     */
+    String getSymbol();
 
 }
