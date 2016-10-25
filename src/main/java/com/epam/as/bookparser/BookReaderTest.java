@@ -24,7 +24,7 @@ public class BookReaderTest {
         //Read a text from the book
         String fileText = reader.getTextFromFile(inputBookFilename);
 
-        //Parse recursively the whole text from the book on separate parts
+        //Parse the whole text from the book on separate parts
         Text text = new Text(fileText);
 
         //Collect recursively all parts back to text
@@ -35,5 +35,6 @@ public class BookReaderTest {
 
         //Write collected text to file
         writer.writeToFile(collectedText, copyBookFilename);
+
     }
 }
