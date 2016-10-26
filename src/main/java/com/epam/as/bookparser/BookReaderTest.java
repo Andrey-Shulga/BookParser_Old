@@ -1,10 +1,13 @@
 package com.epam.as.bookparser;
 
 import com.epam.as.bookparser.entity.Text;
+import com.epam.as.bookparser.model.TextComposite;
 import com.epam.as.bookparser.service.FileReader;
 import com.epam.as.bookparser.service.FileWriter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This program parses book (from text file) into its separate parts.
@@ -36,5 +39,7 @@ public class BookReaderTest {
         //Write collected text to file
         writer.writeToFile(collectedText, copyBookFilename);
 
+        //Add all container objects to list (don't work, need help)
+        List<TextComposite> allContainerList = new ArrayList<>(text.getTextContainer());
     }
 }

@@ -60,6 +60,7 @@ public class Sentence implements TextComposite {
 
     @Override
     public List<TextComposite> getTextContainer() {
+
         return this.sentencePartList;
     }
 

@@ -53,6 +53,7 @@ public class Word implements TextComposite {
 
     @Override
     public List<TextComposite> getTextContainer() {
+
         return this.symbolList;
     }
 

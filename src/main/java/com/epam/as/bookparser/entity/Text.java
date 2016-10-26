@@ -32,7 +32,7 @@ public class Text implements TextComposite {
     @Override
     public void initializeNewTextContainer(String textPart) throws IOException {
         Parser parser = new Parser();
-        String regexp = ".*(\\r\\n|\\r|\\n)";
+        String regexp = "(\\n|^).*?(?=\\n|$)";
         List<String> paragraphs = parser.parseTextOnParts(textPart, regexp);
 
         for (String p : paragraphs) {
@@ -55,7 +55,10 @@ public class Text implements TextComposite {
 
     @Override
     public List<TextComposite> getTextContainer() {
-        return this.paragraphList;
+        List<TextComposite> list = new ArrayList<>();
+        for (TextComposite tc : this.paragraphList)
+            list.add(tc);
+        return list;
     }
 
     @Override

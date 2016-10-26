@@ -42,5 +42,4 @@ public interface TextComposite {
      * @return symbol
      */
     String getSymbol();
-
 }

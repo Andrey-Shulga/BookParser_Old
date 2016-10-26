@@ -47,4 +47,8 @@ class Symbol implements TextComposite {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public String toString() {
+        return ch;
+    }
 }

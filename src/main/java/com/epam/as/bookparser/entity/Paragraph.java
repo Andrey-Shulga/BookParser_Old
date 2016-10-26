@@ -54,7 +54,10 @@ public class Paragraph implements TextComposite {
 
     @Override
     public List<TextComposite> getTextContainer() {
-        return this.sentenceList;
+        List<TextComposite> list = new ArrayList<>();
+        for (TextComposite tc : this.sentenceList)
+            list.add(tc);
+        return list;
     }
 
     @Override
