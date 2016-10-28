@@ -33,7 +33,7 @@ public class Sentence implements TextComposite {
     public void initializeNewTextContainer(String textPart) throws IOException {
 
         Parser parser = new Parser();
-        String regexp = "([^\\p{Punct}\\s\\t]*[^\\p{Punct}\\s\\t])|(\\p{Punct})|(\\s)";
+        String regexp = "([^\\p{Punct}\\s\\t]*[^\\p{Punct}\\s\\t])|(\\p{Punct})|(\\p{Blank})|(\\p{Space})";
         List<String> sentenceParts = parser.parseTextOnParts(textPart, regexp);
 
         for (String sp : sentenceParts) {
